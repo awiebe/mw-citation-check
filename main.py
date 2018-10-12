@@ -141,3 +141,9 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+def help():
+    print("This utility is designed to find citations with suspicious properties in Wikipedia pages")
+    print("Just because this utility finds a citation which it believes to be suspect, does not make the contents of the reference incorrect.")
+    print("This utility checks publishers against a list of unscrupulous journals.  Legitimate athors may publish with thes journals, but the journals are known to have little or no review process, or may publish indescriminantly.")
