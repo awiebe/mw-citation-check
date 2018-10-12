@@ -81,23 +81,23 @@ def check_citation(article_name,citation_node):
             else:
                 domain= urlparse.urlparse(url).hostname
                 if not check_citation_url(domain):
-                    reason=("Bad publisher:%s"%(domain,))
+                    reason=("Bad publisher url:%s"%(domain,))
                     emit_bad_citation(article_name,citation_node,reason)
             continue
         if i.startswith('archive-url='):
-            url=i[12:len(i)]
+            url=i[12:len(i)].strip()
             domain= urlparse.urlparse(url).hostname
             if not check_citation_url(domain):
-                reason= ("Bad publisher:%s"%(domain,))
+                reason= ("Bad archive url:%s"%(domain,))
                 emit_bad_citation(article_name,citation_node,reason)
             elif debug:
                 safe_print("Good citation %s"%(url,))
             continue
         if i.startswith('conference-url='):
-            url=i[len('conference-url='):len(i)]
+            url=i[len('conference-url='):len(i)].strip()
             domain= urlparse.urlparse(url).hostname
             if not check_citation_url(domain):
-                reason= ("Bad publisher:%s"%(domain,))
+                reason= ("Bad conference url:%s"%(domain,))
                 emit_bad_citation(article_name,citation_node,reason)
             elif debug:
                 safe_print("Good citation %s"%(url,))
