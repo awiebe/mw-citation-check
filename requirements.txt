@@ -1,3 +1,4 @@
 configparser==3.5.0
 dateparser==0.7.0
 datrie==0.7.1
+mwparserfromhell
