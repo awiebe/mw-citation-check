@@ -77,30 +77,30 @@ def check_citation(article_name,citation_node):
                 #template substitution currently unresolvable, but probably ok
                 pass
             elif debug:
-                safe_print("Good citation %s"%(url,))
+                safe_print(u"Good citation %s"%(url,))
             else:
                 domain= urlparse.urlparse(url).hostname
                 if not check_citation_url(domain):
-                    reason=("Bad publisher url:%s"%(domain,))
+                    reason=(u"Bad publisher url:%s"%(domain,))
                     emit_bad_citation(article_name,citation_node,reason)
             continue
         if i.startswith('archive-url='):
             url=i[12:len(i)].strip()
             domain= urlparse.urlparse(url).hostname
             if not check_citation_url(domain):
-                reason= ("Bad archive url:%s"%(domain,))
+                reason= (u"Bad archive url:%s"%(domain,))
                 emit_bad_citation(article_name,citation_node,reason)
             elif debug:
-                safe_print("Good citation %s"%(url,))
+                safe_print(u"Good citation %s"%(url,))
             continue
         if i.startswith('conference-url='):
             url=i[len('conference-url='):len(i)].strip()
             domain= urlparse.urlparse(url).hostname
             if not check_citation_url(domain):
-                reason= ("Bad conference url:%s"%(domain,))
+                reason= (u"Bad conference url:%s"%(domain,))
                 emit_bad_citation(article_name,citation_node,reason)
             elif debug:
-                safe_print("Good citation %s"%(url,))
+                safe_print(u"Good citation %s"%(url,))
             continue
    
 
@@ -133,7 +133,7 @@ def main():
         if verbose: safe_print(title)
         p = parse(title)
         if p is None:
-            sys.stderr.write("uNOT EXISTS %s"%(title,))
+            sys.stderr.write(u"NOT EXISTS %s"%(title,))
             continue
         for c in p.filter_templates():
             if c.name.startswith('cite'):
